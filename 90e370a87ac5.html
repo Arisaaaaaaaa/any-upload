@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavena Structure</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body{
+    background:#f8fafc;
+    color:#0f172a;
+    padding:28px 16px;
+    min-height:100vh;
+}
+
+/* Kunci Scroll Body Saat Modal Terbuka */
+body.modal-open {
+    overflow: hidden;
+}
+
+.header-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header-title h2{
+    font-size:22px;
+    color:#0f172a;
+    font-weight:700;
+}
+
+.header-title p{
+    font-size:13px;
+    color:#64748b;
+    margin-top:4px;
+}
+
+/* Tombol Kontrol Global (Buka/Tutup Semua) */
+.global-controls{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:24px;
+}
+
+.action-btn{
+    background:#ffffff;
+    color:#2563eb;
+    border:1px solid #cbd5e1;
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05);
+    transition:all .2s ease;
+}
+
+.action-btn:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+/* Container Utama Tree */
+.tree-container{
+    max-width:540px;
+    margin:0 auto;
+}
+
+/* List Hirarki */
+.tree-group{
+    list-style:none;
+    padding-left:0;
+    margin:0;
+}
+
+/* Sub-group (Cabang anak) */
+.children-container .tree-group {
+    padding-left:20px;
+    position:relative;
+}
+
+.tree-item{
+    position:relative;
+    padding-left:20px;
+    margin:10px 0;
+}
+
+/* --- PERBAIKAN GARIS HIRARKI (CSS TREE CONNECTORS) --- */
+
+/* Garis Vertikal Utama */
+.children-container > .tree-group > .tree-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    bottom: 50%;
+    width: 2px;
+    background: #cbd5e1;
+}
+
+/* Garis Menyambung ke Bawah untuk Node Non-Akhir */
+.children-container > .tree-group > .tree-item:not(:last-child)::before {
+    bottom: -10px;
+}
+
+/* Garis Horizontal Menuju Kartu */
+.children-container > .tree-group > .tree-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22px;
+    width: 16px;
+    height: 2px;
+    background: #cbd5e1;
+}
+
+/* Node Akar Paling Atas (Tanpa Garis Kiri) */
+.tree-container > .tree-group > .tree-item {
+    padding-left: 0;
+}
+.tree-container > .tree-group > .tree-item::before,
+.tree-container > .tree-group > .tree-item::after {
+    display: none;
+}
+
+/* Kartu Node */
+.node-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-left:5px solid #3b82f6;
+    padding:10px 14px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(15, 23, 42, 0.04);
+    transition:all .2s ease;
+}
+
+.node-card:hover{
+    border-color:#cbd5e1;
+    box-shadow:0 4px 10px rgba(15, 23, 42, 0.08);
+}
+
+.node-info{
+    flex:1;
+    cursor:pointer;
+    padding-right:8px;
+}
+
+.node-label{
+    font-size:14px;
+    font-weight:600;
+    color:#1e293b;
+    display:block;
+    word-break:break-word;
+}
+
+/* Tombol Expand / Collapse Per Node */
+.toggle-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#f1f5f9;
+    color:#475569;
+    border:1px solid #cbd5e1;
+    padding:5px 9px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    user-select:none;
+    transition:background .2s, color .2s;
+    flex-shrink:0;
+}
+
+.toggle-btn:hover{
+    background:#e2e8f0;
+    color:#0f172a;
+}
+
+/* Container Sub-Node (Accordion Buka-Tutup) */
+.children-container{
+    display:none; /* Default tertutup */
+}
+
+.children-container.open{
+    display:block;
+}
+
+/* Warna Aksen Level Hirarki */
+.level-0 > .node-card{ border-left-color:#2563eb; background:#eff6ff; }
+.level-0 > .node-card .node-label{ font-size:16px; font-weight:700; color:#1e40af; }
+
+.level-1 > .node-card{ border-left-color:#0284c7; }
+.level-1 > .node-card .node-label{ font-size:14px; color:#0369a1; }
+
+.level-2 > .node-card{ border-left-color:#0d9488; }
+.level-2 > .node-card .node-label{ font-size:13.5px; color:#0f766e; }
+
+.level-3 > .node-card{ border-left-color:#16a34a; }
+.level-3 > .node-card .node-label{ font-size:13px; color:#15803d; }
+
+/* Pop-up Modal Penjelasan */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(15, 23, 42, 0.45);
+    backdrop-filter:blur(4px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:999;
+}
+
+.modal-box{
+    background:#ffffff;
+    padding:24px;
+    border-radius:16px;
+    max-width:440px;
+    width:100%;
+    box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);
+    position:relative;
+    animation: modalIn .2s ease-out;
+}
+
+@keyframes modalIn {
+    from { opacity:0; transform:scale(0.95); }
+    to { opacity:1; transform:scale(1); }
+}
+
+.modal-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:12px;
+    color:#0f172a;
+    border-bottom:2px solid #f1f5f9;
+    padding-bottom:8px;
+    padding-right:24px;
+}
+
+.modal-desc{
+    font-size:14px;
+    color:#475569;
+    line-height:1.6;
+    max-height:50vh;
+    overflow-y:auto;
+}
+
+.modal-footer{
+    margin-top:20px;
+    padding-top:12px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.modal-link-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:#ffffff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:8px;
+    transition:background .2s ease;
+    text-align:center;
+}
+
+.modal-link-btn:hover{
+    background:#1d4ed8;
+}
+
+.close-btn{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:none;
+    border:none;
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    color:#94a3b8;
+}
+
+.close-btn:hover{
+    color:#0f172a;
+}
+</style>
+</head>
+<body>
+
+<div class="header-title">
+    <h2>Struktur Lavena</h2>
+    <p>Klik nama node untuk deskripsi, atau tombol cabang untuk buka-tutup</p>
+</div>
+
+<!-- Tombol Akses Cepat Buka / Tutup Semua -->
+<div class="global-controls">
+    <button class="action-btn" onclick="toggleAll(true)">[+] Buka Semua</button>
+    <button class="action-btn" onclick="toggleAll(false)">[-] Tutup Semua</button>
+</div>
+
+<div class="tree-container" id="tree-root"></div>
+
+<!-- Modal Pop-up Penjelasan -->
+<div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal-title" id="m-title"></div>
+        <div class="modal-desc" id="m-desc"></div>
+        <div class="modal-footer" id="m-footer" style="display:none;">
+            <a href="#" id="m-link" target="_blank" rel="noopener noreferrer" class="modal-link-btn">Pelajari Lebih Lanjut &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<script>
+fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+        const rootContainer = document.getElementById('tree-root');
+        
+        // Deteksi format data.json (apakah berbalut key atau langsung objek)
+        const rootNode = data.label ? data : data[Object.keys(data)[0]];
+        
+        const rootUl = document.createElement('ul');
+        rootUl.className = 'tree-group';
+        rootUl.appendChild(createNodeItem(rootNode, 0, true));
+        rootContainer.appendChild(rootUl);
+    })
+    .catch(err => console.error("Gagal membaca data.json:", err));
+
+// Membuat Elemen Node (LI)
+function createNodeItem(nodeData, level, isRoot = false) {
+    const li = document.createElement('li');
+    li.className = `tree-item level-${level}`;
+
+    const hasChildren = nodeData.children && Object.keys(nodeData.children).length > 0;
+    const childCount = hasChildren ? Object.keys(nodeData.children).length : 0;
+
+    // Kartu Node
+    const card = document.createElement('div');
+    card.className = 'node-card';
+
+    // Info Teks (Klik untuk Buka Modal)
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'node-info';
+    infoDiv.innerHTML = `<span class="node-label">${nodeData.label}</span>`;
+    infoDiv.onclick = () => openModal(nodeData.label, nodeData.desc || 'Belum ada penjelasan.', nodeData.link);
+    card.appendChild(infoDiv);
+
+    li.appendChild(card);
+
+    // Sub-Node (Children)
+    if (hasChildren) {
+        const childrenContainer = document.createElement('div');
+        childrenContainer.className = 'children-container';
+
+        // Root otomatis terbuka saat pertama dimuat
+        if (isRoot) childrenContainer.classList.add('open');
+
+        // Tombol Toggle
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'toggle-btn';
+        toggleBtn.dataset.count = childCount;
+        toggleBtn.innerText = isRoot ? `[-] ${childCount}` : `[+] ${childCount}`;
+
+        toggleBtn.onclick = (e) => {
+            e.stopPropagation();
+            const isOpen = childrenContainer.classList.toggle('open');
+            toggleBtn.innerText = isOpen ? `[-] ${childCount}` : `[+] ${childCount}`;
+        };
+
+        card.appendChild(toggleBtn);
+
+        // Buat 1 UL Pembungkus untuk Semua Sub-Node
+        const subUl = document.createElement('ul');
+        subUl.className = 'tree-group';
+
+        for (const childId in nodeData.children) {
+            subUl.appendChild(createNodeItem(nodeData.children[childId], level + 1, false));
+        }
+
+        childrenContainer.appendChild(subUl);
+        li.appendChild(childrenContainer);
+    }
+
+    return li;
+}
+
+// Buka / Tutup Semua Cabang Sekaligus
+function toggleAll(expand) {
+    document.querySelectorAll('.children-container').forEach(container => {
+        if (expand) {
+            container.classList.add('open');
+        } else {
+            container.classList.remove('open');
+        }
+    });
+
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        const count = btn.dataset.count;
+        btn.innerText = expand ? `[-] ${count}` : `[+] ${count}`;
+    });
+}
+
+// Fungsi Modal
+function openModal(title, desc, link) {
+    document.getElementById('m-title').innerText = title;
+    document.getElementById('m-desc').innerHTML = desc;
+    
+    const footer = document.getElementById('m-footer');
+    const linkBtn = document.getElementById('m-link');
+    
+    if (link && link.trim() !== "") {
+        let formattedLink = link.trim();
+        if (!/^https?:\/\//i.test(formattedLink)) {
+            formattedLink = 'https://' + formattedLink;
+        }
+        linkBtn.href = formattedLink;
+        footer.style.display = 'flex';
+    } else {
+        footer.style.display = 'none';
+    }
+
+    document.getElementById('modal').style.display = 'flex';
+    document.body.classList.add('modal-open');
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
+
+// Tutup Modal dengan Tombol Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
