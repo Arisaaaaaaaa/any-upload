@@ -1,0 +1,118 @@
+{
+  "lavena": {
+    "label": "Lavena",
+    "desc": "<strong>Lavena</strong> adalah entitas/akar utama.",
+    "children": {
+      "van": {
+        "label": "Van",
+        "desc": "Van adalah energi kehidupan yang dimiliki oleh seluruh makhluk hidup dan menjadi fondasi utama sistem Lavena. Seluruh aktivitas tubuh, seperti bergerak, berpikir, bernapas, hingga menggunakan kemampuan, mengonsumsi Van. Selama tubuh masih hidup, Van akan terus diproduksi dan digunakan secara alami. Melalui latihan dan teknik tertentu, Van dapat dimanifestasikan ke berbagai cabang sesuai fungsi dan mekanismenya.",
+        "link": "aoe.rifal.my.id/lavena/van",
+        "children": {
+          "san": {
+            "label": "San",
+            "desc": "San adalah manifestasi Van dalam bentuk medan energi (aura) yang menyelimuti atau keluar dari tubuh. San merupakan cabang Lavena yang paling umum dipelajari karena relatif lebih aman dan stabil. Medan San dapat diatur kepadatannya, bentuknya, kecepatannya, hingga karakteristik lainnya sehingga menjadi dasar berbagai teknik maupun kemampuan."
+          },
+          "han": {
+            "label": "Han",
+            "desc": "Han adalah manifestasi Van yang berfokus pada perubahan struktur tubuh. Han digunakan untuk memodifikasi bagian tubuh, baik secara sementara maupun permanen, seperti memperkuat otot, mengubah jaringan biologis, maupun menciptakan karakteristik fisik baru sesuai kemampuan pengguna."
+          },
+          "gan": {
+            "label": "Gan",
+            "desc": "Gan adalah manifestasi Van yang membentuk sebuah kemampuan unik milik pengguna. Gan lahir dari pemahaman, latihan, pengalaman, imajinasi, ambisi, dan aksi pengguna sehingga setiap orang dapat memiliki kemampuan yang berbeda. Setiap Gan memiliki konsep, mekanisme, batasan, serta aturan kerjanya sendiri."
+          },
+          "pen": {
+            "label": "Pen",
+            "desc": "Pen adalah manifestasi Van dalam bentuk radiasi atau pancaran partikel energi. Berbeda dengan San yang menggunakan medan energi, Pen menggunakan radiasi sebagai media utamanya sehingga jauh lebih sulit dipelajari dan memiliki risiko yang sangat tinggi. Kesalahan kecil dalam mengendalikan Pen dapat menyebabkan radiasi menyerang tubuh penggunanya sendiri hingga berakibat fatal. Karena itu, hampir seluruh pengguna Pen diwajibkan menguasai San terlebih dahulu agar mampu membentuk perlindungan menggunakan Medan San sebelum mempelajari Pen. Meskipun berbahaya, Pen memiliki potensi yang sangat besar dan hampir seluruh konsep yang dapat dilakukan San pada dasarnya juga dapat diterapkan melalui Pen dengan karakteristik yang berbeda."
+          }
+        }
+      },
+      "lin": {
+        "label": "Lin",
+        "desc": "Lin adalah sistem pewarisan kemampuan dalam Lavena. Berbeda dengan Gan yang diciptakan untuk diri sendiri, Lin memungkinkan suatu kemampuan diwariskan kepada generasi berikutnya melalui proses serta syarat yang sangat ketat.",
+        "children": {
+          "den": {
+            "label": "Den",
+            "desc": "Den adalah tahap penciptaan kemampuan keturunan. Pada tahap ini pengguna membangun dasar kemampuan yang nantinya dapat diwariskan. Den umumnya melibatkan Kontrak Lavena dengan syarat, konsekuensi, dan pengorbanan yang sangat besar sehingga hanya sedikit orang yang mampu menciptakannya."
+          },
+          "welio": {
+            "label": "Welio",
+            "desc": "Welio adalah proses pewarisan kemampuan yang telah berhasil dibentuk melalui Den. Melalui Welio, kemampuan keturunan dapat diturunkan kepada generasi selanjutnya sesuai aturan dan syarat yang telah ditetapkan sejak kemampuan tersebut diciptakan."
+          }
+        }
+      },
+      "nix": {
+        "label": "Nix",
+        "desc": "Nix adalah sistem atribut yang memengaruhi sifat dasar suatu kemampuan. Nix tidak menentukan konsep Gan, melainkan mengubah cara kemampuan tersebut bekerja, berkembang, atau berinteraksi. Nix dibagi menjadi beberapa tingkatan berdasarkan pengaruhnya terhadap struktur kemampuan.",
+        "children": {
+          "bes": {
+            "label": "Bes",
+            "desc": "Atribut dasar Gan.",
+            "children": {
+              "damage": { "label": "Damage", "desc": "Memberikan kerusakan secara langsung kepada target." },
+              "major-damage": { "label": "Major Damage", "desc": "Memberikan kerusakan besar dengan daya hancur tinggi." },
+              "shield": { "label": "Shield", "desc": "Membentuk perlindungan untuk mengurangi atau menahan serangan." },
+              "health": { "label": "Health", "desc": "Memulihkan kondisi tubuh, luka, atau stamina." },
+              "move": { "label": "Move", "desc": "Meningkatkan kemampuan bergerak dan bermanuver." },
+              "trans": { "label": "Trans", "desc": "Memindahkan posisi secara instan atau semi-instan." },
+              "crowd-control": { "label": "Crowd Control", "desc": "Mengendalikan banyak target dalam waktu tertentu." },
+              "detection": { "label": "Detection", "desc": "Mendeteksi keberadaan energi, objek, atau makhluk." },
+              "stealth": { "label": "Stealth", "desc": "Menyembunyikan keberadaan pengguna atau Gan." },
+              "support": { "label": "Support", "desc": "Memberikan efek pendukung kepada diri sendiri maupun sekutu." }
+            }
+          },
+          "ola": {
+            "label": "Ola",
+            "desc": "Atribut menengah yang memodifikasi karakteristik Gan.",
+            "children": {
+              "piercing": { "label": "Piercing", "desc": "Serangan mampu menembus pertahanan tertentu." },
+              "homing": { "label": "Homing", "desc": "Serangan dapat mengikuti target." },
+              "reflection": { "label": "Reflection", "desc": "Memantulkan sebagian efek atau serangan." },
+              "absorption": { "label": "Absorption", "desc": "Menyerap energi atau efek tertentu." },
+              "amplification": { "label": "Amplification", "desc": "Meningkatkan efektivitas kemampuan." },
+              "compression": { "label": "Compression", "desc": "Memadatkan energi agar lebih efisien atau kuat." },
+              "expansion": { "label": "Expansion", "desc": "Memperluas jangkauan atau area kemampuan." },
+              "multi-cast": { "label": "Multi Cast", "desc": "Mengaktifkan beberapa efek kemampuan secara bersamaan." },
+              "chain-reaction": { "label": "Chain Reaction", "desc": "Memicu efek lanjutan secara berantai." },
+              "regeneration": { "label": "Regeneration", "desc": "Memulihkan kemampuan atau energi secara bertahap." },
+              "energy-conversion": { "label": "Energy Conversion", "desc": "Mengubah satu bentuk energi menjadi bentuk lain." },
+              "phase-shift": { "label": "Phase Shift", "desc": "Mengubah fase atau sifat interaksi kemampuan terhadap objek." }
+            }
+          },
+          "itio": {
+            "label": "Itio",
+            "desc": "Atribut fundamental yang tertanam kuat pada struktur Gan.",
+            "children": {
+              "instant-power": { "label": "Instant Power", "desc": "Mempercepat perolehan, penguasaan, atau aktivasi kemampuan dengan konsekuensi tertentu." },
+              "flawless-power": { "label": "Flawless Power", "desc": "Menyempurnakan struktur kemampuan sehingga minim celah, lebih stabil, dan sulit diganggu." },
+              "dimensional-absolute": { "label": "Dimensional Absolute", "desc": "Dimensi terisolasi secara absolut dari intervensi luar." },
+              "adaptive-evolution": { "label": "Adaptive Evolution", "desc": "Kemampuan terus berkembang dan beradaptasi terhadap pengalaman serta kondisi baru." },
+              "absolute-stability": { "label": "Absolute Stability", "desc": "Menjaga kemampuan tetap stabil meski pengguna mengalami gangguan." },
+              "energy-efficiency": { "label": "Energy Efficiency", "desc": "Mengurangi konsumsi Van dan San tanpa mengurangi fungsi kemampuan." },
+              "parallel-process": { "label": "Parallel Process", "desc": "Memungkinkan beberapa proses kemampuan berjalan secara bersamaan." },
+              "infinite-scalability": { "label": "Infinite Scalability", "desc": "Memiliki potensi perkembangan yang jauh lebih tinggi dari kemampuan normal." },
+              "self-repair": { "label": "Self Repair", "desc": "Struktur kemampuan dapat memperbaiki kerusakannya sendiri." },
+              "soul-binding": { "label": "Soul Binding", "desc": "Kemampuan terikat pada pemiliknya dan tidak dapat dipindahkan atau dicuri." },
+              "perfect-synchronization": { "label": "Perfect Synchronization", "desc": "Sinkronisasi antara pengguna dan kemampuan menjadi hampir sempurna." },
+              "absolute-concealment": { "label": "Absolute Concealment", "desc": "Kemampuan sangat sulit dideteksi, dianalisis, atau dilacak." },
+              "authority-override": { "label": "Authority Override", "desc": "Memberikan prioritas struktur saat berbenturan dengan kemampuan lain." }
+            }
+          }
+        }
+      },
+      "tin": {
+        "label": "Tin",
+        "desc": "Cabang utama Tin.",
+        "children": {
+          "tin1": { "label": "Tin 1", "desc": "Penjelasan Tin 1" },
+          "tin2": { "label": "Tin 2", "desc": "Penjelasan Tin 2" },
+          "tin3": { "label": "Tin 3", "desc": "Penjelasan Tin 3" },
+          "tin4": { "label": "Tin 4", "desc": "Penjelasan Tin 4" },
+          "tin5": { "label": "Tin 5", "desc": "Penjelasan Tin 5" },
+          "tin6": { "label": "Tin 6", "desc": "Penjelasan Tin 6" },
+          "tin7": { "label": "Tin 7", "desc": "Penjelasan Tin 7" },
+          "tin8": { "label": "Tin 8", "desc": "Penjelasan Tin 8" }
+        }
+      }
+    }
+  }
+}
